@@ -1,0 +1,106 @@
+<%- include("../partials/header") %>
+
+    <title>Usuarios</title>
+
+    <%- include("../partials/_header") %>
+
+        <div class="container">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Agregar usuario
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-ms-10">
+                                <form action="/add" method="post">
+                                    <div class="form-group mt-2">
+                                        <input type="text" name="nombre" placeholder="nombre" class="form-control" required>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="text" name="documento" placeholder="documento"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="email" name="email" placeholder="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="text" name="estado" placeholder="estado" class="form-control" required>
+                                    </div>
+                                    <div class="form-group invisible ">
+                                        <input type="number" name="id_rol" placeholder="id_rol" value="2"
+                                            class="form-control">
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary mt-4">Guardar Usuario</button>
+                                        <button type="button" class="btn btn-secondary mt-4"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-10">
+                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0"
+                        class="scrollspy-example" tabindex="0">
+                        <table id="example" class="table table-bordered table-hover me-5 scrollspy-example" data-bs-spy="scroll"
+                            data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+                            <thead class="bg-dark text-white text-center">
+                                <tr>
+                                    <th> ID</th>
+                                    <th>Nombre</th>
+                                    <th>Documento</th>
+                                    <th>Email</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <% if(data){ %>
+                                    <% for(let i=0; i < data.length; i++ ){%>
+                                        <tr>
+                                            <td>
+                                                <%= (i+1) %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].nombre %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].documento %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].email %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].estado %>
+                                            </td>
+                                            <td>
+                                                <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                                                <a onclick="confirmarUsu(<%= data[i].id %>)" class="btn btn-danger">Eliminar</a>  
+                                            </td>
+                                        </tr>
+                                        <%} %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        </main>
+
+
+        <%- include("../partials/_footer") %>

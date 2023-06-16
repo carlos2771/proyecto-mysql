@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<title>Editar Proveedor</title>
+
+<%- include("../partials/_header") %>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/updateProveedor/<%= data.id %>" method="post">
+                            <div class="form-group">
+                                <input type="text" name="nit"  value="<%= data.nit %>" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="telefono"  value="<%= data.telefono %>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email"  value="<%= data.email %>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="direccion" value="<%= data.direccion %>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="estado" value="<%= data.estado %>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="persona_Encargada" value="<%= data.persona_Encargada %>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="telefono_PE" value="<%= data.telefono_PE %>" placeholder="telefono_pe" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar proveedor </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include("../partials/_footer") %>
