@@ -30,6 +30,26 @@
         });
     });
 
+    // Boton guardar
+    // function guardar() {
+    //     Swal.fire({
+    //         title: 'Do you want to save the changes?',
+    //         showDenyButton: true,
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Save',
+    //     }).then((result) => {
+    //         /* Read more about isConfirmed, isDenied below */
+    //         if (result.isConfirmed) {
+    //             Swal.fire('Saved!', '', 'success');
+    //             window.location = '/add'
+    //         } else if (result.isDenied) {
+    //             Swal.fire('Changes are not saved', '', 'info')
+    //         }
+    //     })
+    // }
+
+    // Boton eliminar
+
     // eliminar usuarios
 
     function confirmarUsu(id) {
@@ -79,9 +99,9 @@
     }
 
 
-        // Eliminar producto
+    // Eliminar producto
 
-        function confirmarEliProd(id) {
+    function confirmarEliProd(id) {
         Swal.fire({
             title: '¿Estas seguro de eliminarlo?',
             text: "¡No podras reversar esta acción!",
@@ -103,9 +123,9 @@
         })
     }
 
-        // Eliminar compra
+    // Eliminar compra
 
-        function confirmarEliCom(id) {
+    function confirmarEliCom(id) {
         Swal.fire({
             title: '¿Estas seguro de eliminarlo?',
             text: "¡No podras reversar esta acción!",
