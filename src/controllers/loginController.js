@@ -9,15 +9,15 @@ controller.ingresar = (req, res)=>{
 
 controller.loguear = async (req, res)=>{
     const email = req.body.email
-    const contraseña = req.body.contraseña
-    let passwordHaash = await bcryptjs.hash(contraseña, 8)
-    if(email && contraseña){
+    const contrasena = req.body.contrasena
+    let passwordHaash = await bcryptjs.hash(contrasena, 8)
+    if(email && contrasena){
         connection.query("select * from usuarios where email = ? ", [email], async (err, results)=>{
-            if(results.length === 0 || !(await  bcryptjs.compare(contraseña, results[0].contraseña))){ // para ver si las contraseñas cohinciden
+            if(results.length === 0 || !(await  bcryptjs.compare(contrasena, results[0].contrasena))){ // para ver si las contraseñas cohinciden
             res.render("./auth/login",{
                 alert : true,
                 alertTitle: "Error",
-                alertMessage: "email o contraseña incorrecta",
+                alertMessage: "email o contrasena incorrecta",
                 alertIcon: "error",
                 showConfirmButton: true,
                 ruta: ""
