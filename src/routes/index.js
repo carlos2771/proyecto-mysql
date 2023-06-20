@@ -1,8 +1,10 @@
 const usuariosContoller = require("../controllers/usuariosContoller")
+const rolContoller = require("../controllers/rolController")
 const proveedorContoller = require("../controllers/proveedorController")
 const landingController = require("../controllers/landingController")
 const productoController = require("../controllers/productoController")
 const compraController = require("../controllers/compraController")
+const ventaController = require("../controllers/ventaController")
 const signupContoller = require("../controllers/signupController")
 const loginController = require("../controllers/loginController")
 
@@ -40,6 +42,14 @@ app.get("/updateCompra/:id_Compra", compraController.editCompra)
 app.post("/updateCompra/:id_Compra", compraController.updateCompra)
 app.get("/deleteCompra/:id_Compra", compraController.deleteCompra)
 
+
+// ROL
+app.get("/rol", rolContoller.listarR )
+app.get("/info", rolContoller.permiso)
+app.get("/infoC", rolContoller.permisoC)
+
+//Venta
+app.get("/venta", ventaController.listarV )
 
 
 app.get("/signup", signupContoller.registrate)

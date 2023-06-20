@@ -1,0 +1,58 @@
+<%- include("../partials/header") %>
+
+    <title>Ventas</title>
+
+    <%- include("../partials/_header") %>
+
+        <div class="container">
+            
+            <div class="row mt-2">
+                <div class="col-md-10">
+                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0"
+                        class="scrollspy-example" tabindex="0">
+                        <table id="example" class="table table-bordered table-hover me-5 scrollspy-example" data-bs-spy="scroll"
+                            data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+                            <thead class="bg-dark text-white text-center">
+                                <tr>
+                                    <th> ID</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Id_cliente</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <% if(data){ %>
+                                    <% for(let i=0; i < data.length; i++ ){%>
+                                        <tr>
+                                            <td>
+                                                <%= (i+1) %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].nombre %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].total %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].estado %>
+                                            </td>
+                                            <td>
+                                                <%= data[i].id_Cliente %>
+                                            </td>
+                                        </tr>
+                                        <%} %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        </main>
+
+
+        <%- include("../partials/_footer") %>
