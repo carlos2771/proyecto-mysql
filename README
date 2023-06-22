@@ -15,3 +15,9 @@
 // join() une todos los elementos de una matriz en una cadena y devuelve una cadena
 // __dirname para ver donde esta ubicacion de algun archivo
 // path El módulo Path proporciona una forma de trabajar con directorios y rutas de archivos. en windows
+
+
+
+ <div>      
+                                <a href="/info/<%= data[0].id %>" class="btn btn-info">Permisos</a>
+                        </div>
