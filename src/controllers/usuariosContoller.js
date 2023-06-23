@@ -3,7 +3,7 @@ const controller = {}
 
 controller.listar = (req, res) => { // para listar lo que haya en la tabla usuarios
     req.getConnection((e, conn) => {
-        conn.query("select * from usuarios", (e, usuarios) => {
+        conn.query("select * from usuarios ", (e, usuarios) => {
             if (e) {
                 res.json(err)
             }
@@ -25,14 +25,35 @@ controller.listar = (req, res) => { // para listar lo que haya en la tabla usuar
 //         })
 //     })
 // }
+const bcryptjs = require("bcryptjs");
 
-controller.save = (req, res) => {
-    const newCustomer = req.body;
-    req.getConnection( (err, conn) => {
-         conn.query("INSERT INTO usuarios set ?", [newCustomer]);
-        console.log(newCustomer);
+controller.save = async (req, res) => {
+  const { nombre, documento, email, id_Rol, estado, contrasena } = req.body;
+
+  try {
+    const hashedPassword = await bcryptjs.hash(contrasena, 10);
+    const array = {
+      nombre,
+      documento,
+      email,
+      id_Rol,
+      estado,
+      contrasena: hashedPassword
+    };
+
+    req.getConnection((err, conn) => {
+      conn.query("INSERT INTO usuarios SET ?", array, (error, results) => {
+        if (error) {
+          throw error;
+        }
+        console.log(array);
         res.redirect("/usuarios");
-    })
+      });
+    });
+  } catch (error) {
+    console.error("Error al encriptar la contraseña:", error);
+    res.status(500).json({ error: "Error al encriptar la contraseña" });
+  }
 };
 
 

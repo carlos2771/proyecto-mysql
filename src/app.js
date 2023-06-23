@@ -63,7 +63,7 @@ rutasApi(app)
 
 //static files 
 app.use(express.static(path.join(__dirname, "public"))) // para traer la carpeta public
-// app.use(express.static('public/styles'))
+app.use(express.static(path.join(__dirname,'validation')))
 
 
 app.listen(app.get("port"), ()=> {

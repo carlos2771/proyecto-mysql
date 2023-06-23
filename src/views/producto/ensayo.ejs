@@ -1,0 +1,41 @@
+<%- include("../partials/header") %>
+
+    <title>Editar Usuarios</title>
+
+    <%- include("../partials/_header") %>
+
+        <div class="container mx-5 my-5">
+            <div class="row mx-5">
+                <div class="col-md-8">
+                    <div class="card">
+                        <h5 class="modal-title text-center">Permisos</h5>
+                        <div class="card-body">
+                            <form action="/updateProducto/<%= data.id_Producto %>" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control">
+                                </div>
+                               
+                                <button type="submit" class="btn btn-primary">Guardar producto</button>
+                            </form>
+                            <% if(data){ %>
+                                <select name="" id="" value="<%=data%>">
+                                    <% for(let i=0; i < data.length; i++ ){%>
+                                        <option value="">
+                                           <%= data[i].nombreP %>
+
+                                            
+                                        </option>
+
+
+                                        <%} %>
+                                </select>
+                                <% } %>
+                            <button class="submit">listo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <%- include("../partials/_footer") %>

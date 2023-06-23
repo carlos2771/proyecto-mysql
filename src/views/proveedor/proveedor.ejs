@@ -20,37 +20,37 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="col-ms-10">
-                                <form action="/addP" method="post">
+                            <div class="col-ms-12">
+                                <form action="/addP" method="post" id="formProveedor">
                                     <div class="form-group mt-2">
-                                        <input type="text" name="nit" placeholder="nit" class="form-control"  required>
+                                        <input type="text" name="nit" placeholder="nit" class="form-control"  id="nit">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="nombre" placeholder="nombre" class="form-control" required>
+                                        <input type="text" name="nombre" placeholder="nombre" class="form-control" id="nombre">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="telefono" placeholder="telefono" class="form-control" required>
+                                        <input type="text" name="telefono" placeholder="telefono" class="form-control" id="telefono">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="email" name="email" placeholder="email" class="form-control" required>
+                                        <input type="email" name="email" placeholder="email" class="form-control" id="email">
                                     </div>
                                     <div class="form-group mt-2">
                                         <input type="text" name="direccion" placeholder="direccion"
-                                            class="form-control" required>
+                                            class="form-control" id="direccion">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="estado" placeholder="estado" class="form-control" required>
+                                        <input type="text" name="estado" placeholder="estado" class="form-control" id="estado">
                                     </div>
                                     <div class="form-group mt-2">
                                         <input type="text" name="persona_Encargada" placeholder="persona_encardada"
-                                            class="form-control" required>
+                                            class="form-control" id="persona_Encargada">
                                     </div>
                                     <div class="form-group mt-2">
                                         <input type="text" name="telefono_PE" placeholder="telefono_pe"
-                                            class="form-control" required>
+                                            class="form-control" id="telefono_PE">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary mt-4">Guardar proveedor</button>
+                                        <button type="button" class="btn btn-primary mt-4" onclick="validarProveedor()">Guardar proveedor</button>
                                         <button type="button" class="btn btn-secondary mt-4"
                                             data-bs-dismiss="modal">Cancelar</button>
                                     </div>
@@ -61,8 +61,8 @@
                 </div>
             </div>
 
-            <div class="row mt-2">
-                <div class="col-md-10">
+            <div class="row mt-2 ms-2">
+                <div class="col-md-12">
                     <table id="example" class="table table-bordered table-hover me-5">
                         <thead class=" bg-dark text-light text-center">
                             <tr>

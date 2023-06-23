@@ -31,6 +31,7 @@ app.get("/deleteProveedor/:id", proveedorContoller.deleteP)
 app.get("/producto", productoController.listarProd)
 app.post("/addProd", productoController.saveProd)
 app.get("/updateProducto/:id_Producto", productoController.editProd)
+app.get("/producto", productoController.proveedor)
 app.post("/updateProducto/:id_Producto", productoController.updateProd)
 app.get("/deleteProducto/:id_Producto", productoController.deleteProd)
 
@@ -46,7 +47,7 @@ app.get("/deleteCompra/:id_Compra", compraController.deleteCompra)
 // ROL
 app.get("/rol", rolContoller.listarR )
 app.get("/info", rolContoller.permiso)
-app.get("/infoC", rolContoller.permisoC)
+
 
 //Venta
 app.get("/venta", ventaController.listarV )

@@ -24,26 +24,30 @@
                                 <form action="/addProd" method="post">
                                     <div class="form-group mt-2">
                                         <input type="text" name="nombre" placeholder="Nombre Producto"
-                                            class="form-control">
+                                            class="form-control" id="nombre">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="precio" placeholder="Precio" class="form-control">
+                                        <input type="number" name="precio" placeholder="Precio" class="form-control"
+                                            id="precio">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="cantidad" placeholder="Cantidad"
-                                            class="form-control">
+                                        <input type="number" name="cantidad" placeholder="Cantidad" class="form-control"
+                                            id="cantidad">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="estado" placeholder="estado" class="form-control">
+                                        <input type="text" name="estado" placeholder="estado" class="form-control"
+                                            id="estado">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <p>Selecciona un proveedor</p>
-                                        <input type="radio" id="1" name="id_Proveedor" value="1">
-                                        <label for="1">Avon</label><br>
-                                        <input type="radio" id="2" name="id_Proveedor" value="2">
-                                        <label for="2">Dorco</label><br>
-                                        <input type="radio" id="3" name="id_Proveedor" value="3">
-                                        <label for="3">Pantene</label>
+                                        <% if(data){ %>
+                                            <select name="id_Proveedor" id="id_Proveedor">
+                                                <% for (let i=0; i < data.length; i++) { %>
+                                                    <option value="<%= data[i].nombreP %>">
+                                                        <%= data[i].nombreP %>
+                                                    </option>
+                                                    <% } %>
+                                            </select>
+                                            <% } %>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary mt-4">Guardar producto</button>
@@ -91,7 +95,8 @@
                                         <td>
                                             <a href="/updateProducto/<%= data[i].id_Producto %>"
                                                 class="btn btn-info">Actualizar</a>
-                                                <a onclick="confirmarEliProd(<%= data[i].id %>)" class="btn btn-danger">Eliminar</a>
+                                            <a onclick="confirmarEliProd(<%= data[i].id %>)"
+                                                class="btn btn-danger">Eliminar</a>
                                         </td>
                                     </tr>
                                     <%} %>

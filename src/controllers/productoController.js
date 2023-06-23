@@ -16,43 +16,35 @@ controller.listarProd = (req, res) => { // para listar lo que haya en la tabla u
 }
 
 
-// controller.save = (req, res) => {
-//     const data = req.body
-//     req.getConnection((err, conn) => {
-//         conn.query('INSERT INTO usuarios set ?', [data], (err, usuarios) => {
-//             console.log(usuarios);
-//             res.render("/")
-//         })
-//     })
-// }
-
 controller.saveProd = (req, res) => {
     const newProducto = req.body;
-    req.getConnection( (err, conn) => {
-         conn.query("INSERT INTO producto set ?", [newProducto]);
+    req.getConnection((err, conn) => {
+        conn.query("INSERT INTO producto set ?", [newProducto]);
         console.log(newProducto);
         res.redirect("/producto");
     })
 };
 
 
-controller.editProd = (req,res) =>{
+controller.editProd = (req, res) => {
     const { id_Producto } = req.params; // dentro del cuerpo de body esta todos los campos de mysql nombre id telefono etc..
-    req.getConnection((err, conn)=>{
-        conn.query("select * from producto where id_Producto= ?", [id_Producto], (err, producto)=>{
-            res.render("./producto/producto_edit",{
-                data : producto[0]
+    req.getConnection((err, conn) => {
+        conn.query("select * from producto where id_Producto= ?", [id_Producto], (err, producto) => {
+            res.render("./producto/producto_edit", {
+                data: producto[0]
             })
-            
+
         })
     })
 }
 
-controller.updateProd = (req, res)=>{
+// select prov
+
+controller.updateProd = (req, res) => {
     const { id_Producto } = req.params
     const newProveedor = req.body
-    req.getConnection((err, conn)=>{
-        conn.query("update producto set ? where id_Producto = ?",[newProveedor, id_Producto], (err,rows)=>{
+    req.getConnection((err, conn) => {
+        conn.query("update producto set ? where id_Producto = ?", [newProveedor, id_Producto], (err, rows) => {
             res.redirect("/producto")
         })
     })
@@ -71,5 +63,21 @@ controller.deleteProd = (req, res) => {
 };
 
 
+// select pvd.nombre from proveedor pvd join producto prod ON (pvd.id = prod.id_Proveedor)
+controller.proveedor = (req, res) => {
+
+    req.getConnection(async(e, conn) => {
+        await conn.query ("SELECT nombreP FROM proveedor", (e, proveedor) => {
+            if (e) {
+                res.json(e);
+            } else {
+                console.log(proveedor);
+                res.render("./producto/producto", {
+                    data: proveedor
+                });
+            }
+        });
+    });
+};
 
 module.exports = controller

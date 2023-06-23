@@ -6,7 +6,7 @@
 
         <div class="container">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-success mt-4 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Agregar usuario
             </button>
 
@@ -21,26 +21,32 @@
                         </div>
                         <div class="modal-body">
                             <div class="col-ms-10">
-                                <form action="/add" method="post">
+                                <form action="/add" method="post" id="formUsuarios">
                                     <div class="form-group mt-2">
-                                        <input type="text" name="nombre" placeholder="nombre" class="form-control" required>
+                                        <input type="text" name="nombre" placeholder="nombre" class="form-control"  id="nombre">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="documento" placeholder="documento"
-                                            class="form-control" required>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input type="email" name="email" placeholder="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input type="text" name="estado" placeholder="estado" class="form-control" required>
-                                    </div>
-                                    <div class="form-group invisible ">
-                                        <input type="number" name="id_rol" placeholder="id_rol" value="2"
+                                        <input type="text" name="documento" placeholder="documento" id="documento"
                                             class="form-control">
                                     </div>
+                                    <div class="form-group mt-2">
+                                        <input type="email" name="email" placeholder="email" class="form-control"  id="email">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" id="contrasena" class="form-control">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="password" id="contrasenaConfirm" placeholder="Confirmación de contraseña" class="form-control">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input type="text" name="estado" placeholder="estado" class="form-control" id="estado">
+                                    </div>
+                                    <div class="form-group invisible ">
+                                        <input type="number" name="id_Rol" placeholder="id_rol" value="2"
+                                            class="form-control" id="id_Rol">
+                                    </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary mt-4"required>Guardar Usuario</button>
+                                        <button type="button" class="btn btn-primary mt-4" onclick="validarUsuario()">Guardar Usuario</button>
                                         <button type="button" class="btn btn-secondary mt-4"
                                             data-bs-dismiss="modal">Cancelar</button>
                                     </div>
@@ -50,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 ms-2">
                 <div class="col-md-10">
                     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0"
                         class="scrollspy-example" tabindex="0">

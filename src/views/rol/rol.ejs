@@ -10,14 +10,15 @@
                 <div class="col-md-10">
                     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0"
                         class="scrollspy-example" tabindex="0">
-                        <table id="example" class="table table-bordered table-hover me-5 scrollspy-example" data-bs-spy="scroll"
+                        <table  class="table table-bordered table-hover me-5 scrollspy-example" data-bs-spy="scroll"
                             data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+                            <a href="/info/<%= data[0].id %>" class="btn btn-info">Permisos</a>
                             <thead class="bg-dark text-white text-center">
                                 <tr>
                                     <th> ID</th>
                                     <th>Nombre</th>
                                     <th>Estado</th>
-                                    <th>Permiso</th>
+
                                     
                                 </tr>
                             </thead>
@@ -33,9 +34,6 @@
                                             </td>
                                             <td>
                                                 <%= data[i].estado %>
-                                            </td>
-                                            <td>
-                                                <a href="/info/<%= data[i].id %>" class="btn btn-info">Permiso</a>
                                             </td>
                                             
                                         </tr>

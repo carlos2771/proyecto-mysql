@@ -19,6 +19,10 @@
 <!-- Alertas -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="/validacionAgregar.js"></script>
+
+<script src="/validacionEliminar.js"></script>
+
 <!-- alerta confirmar borrado -->
 <script>
 
@@ -26,126 +30,8 @@
     $(document).ready(function () {
         $('#example').DataTable({
             pageLength: 5,
-            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+            
         });
     });
-
-    // Boton guardar
-    // function guardar() {
-    //     Swal.fire({
-    //         title: 'Do you want to save the changes?',
-    //         showDenyButton: true,
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Save',
-    //     }).then((result) => {
-    //         /* Read more about isConfirmed, isDenied below */
-    //         if (result.isConfirmed) {
-    //             Swal.fire('Saved!', '', 'success');
-    //             window.location = '/add'
-    //         } else if (result.isDenied) {
-    //             Swal.fire('Changes are not saved', '', 'info')
-    //         }
-    //     })
-    // }
-
-    // Boton eliminar
-
-    // eliminar usuarios
-
-    function confirmarUsu(id) {
-        Swal.fire({
-            title: '¿Estas seguro de eliminarlo?',
-            text: "¡No podras reversar esta acción!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#FF0000',
-            cancelButtonColor: '#808080',
-            confirmButtonText: 'Si, Eliminarlo!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'El registro ha sido eliminado',
-                    'success'
-                ).then(() => {
-                    window.location = '/delete/' + id
-                })
-            }
-        })
-    }
-
-    // Eliminar proveedores
-
-    function confirmarEliProv(id) {
-        Swal.fire({
-            title: '¿Estas seguro de eliminarlo?',
-            text: "¡No podras reversar esta acción!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#FF0000',
-            cancelButtonColor: '#808080',
-            confirmButtonText: 'Si, Eliminarlo!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'El registro ha sido eliminado',
-                    'success'
-                ).then(() => {
-                    // window.location = '/deleteProveedor/'+ id
-                })
-            }
-        })
-    }
-
-
-    // Eliminar producto
-
-    function confirmarEliProd(id) {
-        Swal.fire({
-            title: '¿Estas seguro de eliminarlo?',
-            text: "¡No podras reversar esta acción!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#FF0000',
-            cancelButtonColor: '#808080',
-            confirmButtonText: 'Si, Eliminarlo!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'El registro ha sido eliminado',
-                    'success'
-                ).then(() => {
-                    // window.location = '/deleteProducto/'+ id
-                })
-            }
-        })
-    }
-
-    // Eliminar compra
-
-    function confirmarEliCom(id) {
-        Swal.fire({
-            title: '¿Estas seguro de eliminarlo?',
-            text: "¡No podras reversar esta acción!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#FF0000',
-            cancelButtonColor: '#808080',
-            confirmButtonText: 'Si, Eliminarlo!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'El registro ha sido eliminado',
-                    'success'
-                ).then(() => {
-                    // window.location = '/deleteCompra/'+ id
-                })
-            }
-        })
-    }
-
-
 </script>
