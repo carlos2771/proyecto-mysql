@@ -21,17 +21,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="col-ms-10">
-                                <form action="/addProd" method="post">
+                                <form action="/addProd" method="post" id="formProducto">
                                     <div class="form-group mt-2">
                                         <input type="text" name="nombre" placeholder="Nombre Producto"
                                             class="form-control" id="nombre">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="precio" placeholder="Precio" class="form-control"
+                                        <input type="text" name="precio" placeholder="Precio" class="form-control"
                                             id="precio">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="cantidad" placeholder="Cantidad" class="form-control"
+                                        <input type="text" name="cantidad" placeholder="Cantidad" class="form-control"
                                             id="cantidad">
                                     </div>
                                     <div class="form-group mt-2">
@@ -39,18 +39,23 @@
                                             id="estado">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <% if(data){ %>
-                                            <select name="id_Proveedor" id="id_Proveedor">
-                                                <% for (let i=0; i < data.length; i++) { %>
-                                                    <option value="<%= data[i].nombreP %>">
-                                                        <%= data[i].nombreP %>
-                                                    </option>
+                                        <% if (data.proveedor && data.proveedor.length > 0) { %>
+                                            <select name="id_Proveedor" class="form-select" id="proveedor">
+                                                <option selected disabled value="">Selecciona el proveedor</option>
+                                                <% let selectedIds = []; %>
+                                                <% for (let i = 0; i < data.proveedor.length; i++) { %>
+                                                    <% if (!selectedIds.includes(data.proveedor[i].id)) { %>
+                                                        <% selectedIds.push(data.proveedor[i].id); %>
+                                                        <option value="<%= data.proveedor[i].id %>">
+                                                            <%= data.proveedor[i].nombre %>
+                                                        </option>
                                                     <% } %>
+                                                <% } %>
                                             </select>
-                                            <% } %>
+                                        <% } %>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary mt-4">Guardar producto</button>
+                                        <button type="button" class="btn btn-primary mt-4" onclick="validarProducto()">Guardar producto</button>
                                         <button type="button" class="btn btn-secondary mt-4"
                                             data-bs-dismiss="modal">Cancelar</button>
                                     </div>
@@ -74,28 +79,29 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <% if(data){ %>
-                                <% for(let i=0; i < data.length; i++ ){%>
+                            <% if(data.producto && data.proveedor){ %>
+                                <% for(let i=0; i < data.producto.length; i++ ){%>
                                     <tr>
                                         <td>
                                             <%= (i+1) %>
                                         </td>
                                         <td>
-                                            <%= data[i].nombre %>
+                                            <%= data.producto[i].nombre %>
                                         </td>
                                         <td>
-                                            <%= data[i].precio %>
+                                            <%= data.producto[i].precio %>
                                         </td>
                                         <td>
-                                            <%= data[i].cantidad %>
+                                            <%= data.producto[i].cantidad %>
                                         </td>
                                         <td>
-                                            <%= data[i].estado %>
+                                            <%= data.producto[i].estado %>
                                         </td>
+                                        
                                         <td>
-                                            <a href="/updateProducto/<%= data[i].id_Producto %>"
+                                            <a href="/updateProducto/<%= data.producto[i].id_Producto %>"
                                                 class="btn btn-info">Actualizar</a>
-                                            <a onclick="confirmarEliProd(<%= data[i].id %>)"
+                                            <a onclick="confirmarEliProd(<%= data.producto[i].id %>)"
                                                 class="btn btn-danger">Eliminar</a>
                                         </td>
                                     </tr>

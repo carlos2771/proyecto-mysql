@@ -6,9 +6,9 @@
 
         <div class="container mx-5 my-5">
             <div class="row mx-5">
-                <div class="col-md-8">
+                <div class="col-md-8 editProveedor">
                     <div class="card">
-                        <h5 class="modal-title text-center">Editar proveedor</h5>
+                        <h5 class="modal-title text-center h2">Editar proveedor</h5>
                         <div class="card-body">
                             <form action="/updateProveedor/<%= data.id %>" method="post" id="formEditProveedor">
                                 <div class="form-group mt-4">
@@ -48,5 +48,27 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            .editProveedor {
+                width: 100%;
+                max-width: 700px;
+                padding: 15px;
+                margin: auto;
+            }
+
+             /* @media (max-width: 320px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            } */
+
+            @media (max-width: 768px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            }
+
+        </style>
 
         <%- include("../partials/_footer") %>

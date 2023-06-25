@@ -71,6 +71,15 @@ function confirmarEliProd(id) {
 
 // Eliminar compra
 
+function calcularSubtotal(data) {
+    let subtotal = 0;
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        subtotal += data[i].cantidad * data[i].precio;
+      }
+    }
+    return subtotal;
+  }
 function confirmarEliCom(id) {
     Swal.fire({
         title: '¿Estas seguro de eliminarlo?',

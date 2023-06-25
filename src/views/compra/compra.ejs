@@ -23,17 +23,34 @@
                         <div class="modal-body">
                             <div class="col-ms-10">
                                 <form action="/addCompra" method="post">
-                                    <div class="form-group mt-2">
-                                        <input type="date" name="fecha" placeholder="Fecha Compra" class="form-control"
-                                            required>
+                                    <div class="form-group mt-2 ">
+                                        <input type="date" name="fecha" placeholder="Fecha"
+                                            class="form-control">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="total" placeholder="Total" class="form-control"
-                                            required>
+                                        <input type="number" name="cantidad" placeholder="cantidad"
+                                            class="form-control">
+                                    </div>
+                                    <div class="form-group mt-2 ">
+                                        <input type="number" name="total" placeholder="Total"
+                                            class="form-control">
+                                    </div>
+                                    <div class="form-group mt-2 ">
+                                        <input type="number" name="estado" placeholder="Estado"
+                                            class="form-control">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="estado" placeholder="estado" class="form-control"
-                                            required>
+                                        <label >Productos Disponibles</label>
+                                        <select name="id_Producto" class="form-select">
+                                            <% if (data.producto) { %>                                                
+                                                    <% for (let i=0; i < data.producto.length; i++) { %>
+                                                                <option value="<%= data.producto[i].id_Producto  %>">
+                                                                    <%= data.producto[i].nombre %> Cantidad: <%= data.producto[i].cantidad %>
+                                                                </option>
+                                                                <% } %>
+                                                                    <% } %>
+                                                                       
+                                        </select>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary mt-4">Guardar Compra</button>
@@ -46,6 +63,10 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- Modal -->
+
             <div class="row mt-2">
                 <div class="col-md-10">
                     <table id="example" class="table table-bordered table-hover me-5 text-center">
@@ -53,39 +74,48 @@
                             <tr>
                                 <th> ID </th>
                                 <th>Fecha</th>
+                                <th>Cantidad</th>
                                 <th>Total</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="text-center ">
-                            <% if(data){ %>
-                                <% for(let i=0; i < data.length; i++ ){%>
+                            <% if(data.compra){ %>
+                                <% for(let i=0; i < data.compra.length; i++ ){%>
                                     <tr>
                                         <td>
                                             <%= (i+1) %>
                                         </td>
                                         <td>
-                                            <%= data[i].fecha %>
+                                            <%= data.compra[i].fecha %>
                                         </td>
                                         <td>
-                                            <%= data[i].total %>
+                                            <%= (data.compra[i].cantidad ) %>
                                         </td>
                                         <td>
-                                            <%= data[i].estado %>
+                                            <%= (data.compra[i].total ) %>
                                         </td>
-                                        <td class="text-center">
-                                            <a onclick="confirmarEliCom(<%= data[i].id %>)" class="btn btn-danger">Eliminar</a>
-                                            <!-- <a href="/updateCompra/<%= data[i].id_Compra %>"
-                                                class="btn btn-info mt-2">actualizar</a> -->
+                                        <td>
+                                            <%= data.compra[i].estado %>
                                         </td>
+                                        <td>
+                                            <a onclick="confirmarEliProd(<%= data.compra[i].id_Compra %>)"
+                                                class="btn btn-danger">Eliminar</a>
+                                        </td>
+
                                     </tr>
                                     <%} %>
                                         <% } %>
                         </tbody>
                     </table>
                 </div>
+
+
+
+
             </div>
 
         </div>
+
         <%- include('../partials/_footer') %>

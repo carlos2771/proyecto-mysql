@@ -1,34 +1,64 @@
 <%- include('../partials/header') %>
 
-<title>Editar Proveedor</title>
+    <title>Editar Proveedor</title>
 
-<%- include("../partials/_header") %>
+    <%- include("../partials/_header") %>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="/updateProducto/<%= data.id_Producto %>" method="post">
-                            <div class="form-group">
-                                <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="precio"  value="<%= data.precio %>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="cantidad"  value="<%= data.cantidad %>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="estado" value="<%= data.estado %>"  class="form-control">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar producto</button>
-                        </form>
+        <div class="container mx-5 my-5">
+            <div class="row mx-5">
+                <div class="col-md-8 editProveedor">
+                    <div class="card">
+                        <h5 class="modal-title text-center h2">Editar productos</h5>
+                        <div class="card-body">
+                            <form action="/updateProducto/<%= data.producto.id_Producto %>" method="post" id="formEditProducto">
+                                <div class="form-group mt-4">
+                                    <input type="text" name="nombre" value="<%= data.producto.nombre %>" class="form-control" disabled id="nombre">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="text" name="precio" value="<%= data.producto.precio %>" class="form-control" id="precio">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="text" name="cantidad" value="<%= data.producto.cantidad %>"
+                                        class="form-control" id="cantidad">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="text" name="estado" value="<%= data.producto.estado %>" class="form-control" id="estado">
+                                </div>
+
+                                <div class="form-group mt-4">
+                                    <input type="text" name="proveedor" value="<%= data.proveedor.nombre %>" class="form-control" id="proveedor">
+                                </div>
+                               
+                                <div class="text-center mt-4">
+                                    <button type="button" class="btn btn-success mt-4" onclick="validarEditarProducto()">Guardar producto </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
+        <style>
+            .editProveedor {
+                width: 100%;
+                max-width: 700px;
+                padding: 15px;
+                margin: auto;
+            }
 
-    <%- include("../partials/_footer") %>
+             /* @media (max-width: 320px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            } */
+
+            @media (max-width: 768px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            }
+
+        </style>
+
+        <%- include("../partials/_footer") %>

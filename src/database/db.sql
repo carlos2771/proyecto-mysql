@@ -37,3 +37,5 @@ CREATE TABLE proveedor
 ); 
 
 INSERT INTO `proveedor`(`id_proveedor`, `nit`, `nombre`, `telefono`, `email`, `direccion`, `estado`, `persona_encardada`, `telefono_Pe`) VALUES (null,'10000202','p&g','3045939','p&g@gmail.com','poblado','1','camilo','302838383')
+
+-- SELECT p.nombre, p.precio, dt.cantidad, dt.subtotal FROM detalle_compra dt INNER JOIN producto p ON  dt.id_Producto = p.id_Producto

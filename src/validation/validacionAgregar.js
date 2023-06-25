@@ -44,10 +44,13 @@ function validarUsuario() {
         errors.push('El nombre solo puede contener letras')
     } else if (!isValidDocument(documento)) {
         errors.push('El documento solo puede contener números')
-    } if (errors.length > 0) {
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
         swal.fire({
             icon: 'error',
             title: 'Error en la validación',
+            width: '25em',
             text: errors.join('\n')
         })
         return false
@@ -58,6 +61,7 @@ function validarUsuario() {
             icon: 'success',
             title: 'Registrado',
             text: 'Usuario registrado',
+            width: '25em',
             timer: 10000
         })
     }
@@ -84,10 +88,13 @@ function validarEditarUsuario() {
         errors.push('El nombre solo puede contener letras')
     } else if (!isValidDocument(documento)) {
         errors.push('El documento solo puede contener números')
-    } if (errors.length > 0) {
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
         swal.fire({
             icon: 'error',
             title: 'Error en la validación',
+            width: '25em',
             text: errors.join('\n')
         })
         return false
@@ -98,6 +105,7 @@ function validarEditarUsuario() {
             icon: 'success',
             title: 'Actualizado',
             text: 'Usuario actualizado',
+            width: '25em',
             timer: 10000
         })
     }
@@ -105,7 +113,16 @@ function validarEditarUsuario() {
 }
 
 
-
+    function calcularSubtotal(data) {
+      let subtotal = 0;
+      if (data) {
+        for (let i = 0; i < data.length; i++) {
+          subtotal += data[i].cantidad * data[i].precio;
+        }
+      }
+      return subtotal;
+    }
+    
 // Validacion Agregar Proveedor
 function validarProveedor() {
 
@@ -135,10 +152,13 @@ function validarProveedor() {
         errors.push('El nombre de la persona encargada solo puede contener letras')
     } else if (!isValidDocument(telefono_PE) || telefono_PE.length < 7 || telefono_PE.length > 10) {
         errors.push('El telefono de la persona encargada solo puede contener números y debe tener entre 7 y 10 caracteres')
-    } if (errors.length > 0) {
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
         swal.fire({
             icon: 'error',
             title: 'Error en la validación',
+            width: '25em',
             text: errors.join('\n')
         })
         return false
@@ -149,6 +169,7 @@ function validarProveedor() {
             icon: 'success',
             title: 'Registrado',
             text: 'Proveedor registrado',
+            width: '25em',
             timer: 10000
         })
     }
@@ -185,10 +206,13 @@ function validarEditarProveedor() {
         errors.push('El nombre de la persona encargada solo puede contener letras')
     } else if (!isValidDocument(telefono_PE) || telefono_PE.length < 7 || telefono_PE.length > 10) {
         errors.push('El telefono de la persona encargada solo puede contener números y debe tener entre 7 y 10 caracteres')
+    }else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
     } if (errors.length > 0) {
         swal.fire({
             icon: 'error',
             title: 'Error en la validación',
+            width: '25em',
             text: errors.join('\n')
         })
         return false
@@ -199,6 +223,95 @@ function validarEditarProveedor() {
             icon: 'success',
             title: 'Registrado',
             text: 'Proveedor registrado',
+            width: '25em',
+            timer: 10000
+        })
+    }
+
+}
+
+
+// Validar agregar producto
+
+function validarProducto() {
+
+
+    let nombre = document.getElementById("nombre").value;
+    let precio = document.getElementById("precio").value;
+    let cantidad = document.getElementById("cantidad").value;
+    let estado = document.getElementById("estado").value;
+    let proveedor = document.getElementById("proveedor").value;
+
+
+    let errors = []
+
+    if (nombre.trim() === '' || precio.trim() === '' || cantidad.trim() === '' || estado.trim() === '' || proveedor.trim()=== '') {
+        errors.push('Por favor ingresa todos los campos')
+    } else if (!isValidDocument(cantidad)) {
+        errors.push('La cantidad solo puede contener números')
+    } else if (!isValidDocument(precio)) {
+        errors.push('El precio no puede contener letras')
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
+        swal.fire({
+            icon: 'error',
+            title: 'Error en la validación',
+            width: '25em',
+            text: errors.join('\n')
+        })
+        return false
+    } else {
+        let form = document.getElementById('formProducto')
+        form.submit()
+        swal.fire({
+            icon: 'success',
+            title: 'Registrado',
+            text: 'Usuario registrado',
+            width: '25em',
+            timer: 10000
+        })
+    }
+
+}
+
+
+function validarEditarProducto() {
+
+
+    let nombre = document.getElementById("nombre").value;
+    let precio = document.getElementById("precio").value;
+    let cantidad = document.getElementById("cantidad").value;
+    let estado = document.getElementById("estado").value;
+    // let proveedor = document.getElementById("proveedor").value;
+
+
+    let errors = []
+
+    if (nombre.trim() === '' || precio.trim() === '' || cantidad.trim() === '' || estado.trim() === '') {
+        errors.push('Por favor ingresa todos los campos')
+    } else if (!isValidDocument(cantidad)) {
+        errors.push('La cantidad solo puede contener números')
+    } else if (!isValidDocument(precio)) {
+        errors.push('El precio no puede contener letras')
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
+        swal.fire({
+            icon: 'error',
+            title: 'Error en la validación',
+            width: '25em',
+            text: errors.join('\n')
+        })
+        return false
+    } else {
+        let form = document.getElementById('formEditProducto')
+        form.submit()
+        swal.fire({
+            icon: 'success',
+            title: 'Registrado',
+            text: 'Usuario registrado',
+            width: '25em',
             timer: 10000
         })
     }

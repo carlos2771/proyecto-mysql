@@ -6,26 +6,30 @@
 
         <div class="container mx-5 my-5">
             <div class="row mx-5">
-                <div class="col-md-8">
+                <div class="col-md-8 editUsuario">
                     <div class="card">
-                        <h5 class="modal-title text-center">Editar usuario</h5>
+                        <h5 class="modal-title text-center h2">Editar usuario</h5>
                         <div class="card-body">
                             <form action="/update/<%= data.id %> " method="post" id="formEditUsuarios">
                                 <div class="form-group mt-2">
-                                    <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control" id="nombre">
+                                    <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control"
+                                        id="nombre">
                                 </div>
                                 <div class="form-group mt-2">
                                     <input type="text" name="documento" value="<%= data.documento %>"
                                         class="form-control" id="documento">
                                 </div>
                                 <div class="form-group mt-2">
-                                    <input type="text" name="email" value="<%= data.email %>" class="form-control" id="email">
+                                    <input type="text" name="email" value="<%= data.email %>" class="form-control"
+                                        id="email">
                                 </div>
                                 <div class="form-group mt-2">
-                                    <input type="text" name="estado" value="<%= data.estado %>" class="form-control" id="estado">
+                                    <input type="text" name="estado" value="<%= data.estado %>" class="form-control"
+                                        id="estado">
                                 </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-success mt-4" onclick="validarEditarUsuario()">Guardar Usuario</button>
+                                    <button type="button" class="btn btn-success mt-4"
+                                        onclick="validarEditarUsuario()">Guardar Usuario</button>
                                     <a class="btn btn-danger mt-4" href="/usuarios">Cancelar</a>
                                 </div>
                             </form>
@@ -35,5 +39,30 @@
             </div>
 
         </div>
+
+        <style>
+            .editUsuario {
+                width: 100%;
+                max-width: 700px;
+                padding: 15px;
+                margin: auto;
+            }
+
+             /* @media (max-width: 320px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            } */
+
+            @media (max-width: 768px){
+            .container, .row{
+                margin: 0px !important;
+            }
+            }
+
+        </style>
+
+
+
 
         <%- include("../partials/_footer") %>

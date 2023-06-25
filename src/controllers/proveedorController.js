@@ -40,6 +40,7 @@ controller.editP = (req,res) =>{
     const { id } = req.params; // dentro del cuerpo de body esta todos los campos de mysql nombre id telefono etc..
     req.getConnection((err, conn)=>{
         conn.query("select * from proveedor where id= ?", [id], (err, proveedor)=>{
+           
             res.render("./proveedor/proveedor_edit",{
                 data : proveedor[0]
             })

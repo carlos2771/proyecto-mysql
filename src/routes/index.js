@@ -31,7 +31,6 @@ app.get("/deleteProveedor/:id", proveedorContoller.deleteP)
 app.get("/producto", productoController.listarProd)
 app.post("/addProd", productoController.saveProd)
 app.get("/updateProducto/:id_Producto", productoController.editProd)
-app.get("/producto", productoController.proveedor)
 app.post("/updateProducto/:id_Producto", productoController.updateProd)
 app.get("/deleteProducto/:id_Producto", productoController.deleteProd)
 
@@ -42,6 +41,7 @@ app.post("/addCompra", compraController.saveCompra)
 app.get("/updateCompra/:id_Compra", compraController.editCompra)
 app.post("/updateCompra/:id_Compra", compraController.updateCompra)
 app.get("/deleteCompra/:id_Compra", compraController.deleteCompra)
+
 
 
 // ROL
