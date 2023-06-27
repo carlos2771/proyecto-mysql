@@ -18,7 +18,7 @@ controller.listarR = (req, res) => { // para listar lo que haya en la tabla usua
 
 controller.permiso = (req, res) => {
     req.getConnection((e, conn)=>{
-        conn.query("select p.nombre AS 'nombrePermiso', r.id_Rol AS 'idDelRol' from permiso p inner join rol_permiso r on p.id_Permiso = r.id_Permiso where id_Rol order by id_Rol",(e,inner)=>{
+        conn.query("select p.nombre AS 'nombrePermiso', r.id_Rol AS 'idDelRol', rl.nombre 'nombreR' from permiso p inner join rol_permiso r on p.id_Permiso = r.id_Permiso inner JOIN rol rl ON rl.id_Rol = r.id_Rol",(e,inner)=>{
             if(e){
                 res.json(e)
             }

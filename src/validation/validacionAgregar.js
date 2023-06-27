@@ -51,22 +51,45 @@ function validarUsuario() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formUsuarios')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            text: 'Usuario registrado',
+        Swal.fire({
+            title: 'Estas seguro de guardar el usuario?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
             width: '25em',
-            timer: 10000
-        })
-    }
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formUsuarios')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Registrado',
+                    text: 'Usuario registrado',
+                    width: '25em',
+                    confirmButtonColor: '#198754',
+                    timer: 10000
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha guardado el usuario', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
+    } 
 
 }
+
+
 
 // Validacion Editar Usuario
 function validarEditarUsuario() {
@@ -95,33 +118,44 @@ function validarEditarUsuario() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formEditUsuarios')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Actualizado',
-            text: 'Usuario actualizado',
+        Swal.fire({
+            title: 'Estas seguro de actualizar el usuario?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
             width: '25em',
-            timer: 10000
-        })
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formEditUsuarios')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Actualizado',
+                    text: 'Usuario actualizado',
+                    width: '25em',
+                    confirmButtonColor: '#198754',
+                    timer: 10000
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha actualizado el usuario', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
     }
 
 }
 
-
-    function calcularSubtotal(data) {
-      let subtotal = 0;
-      if (data) {
-        for (let i = 0; i < data.length; i++) {
-          subtotal += data[i].cantidad * data[i].precio;
-        }
-      }
-      return subtotal;
-    }
     
 // Validacion Agregar Proveedor
 function validarProveedor() {
@@ -159,19 +193,40 @@ function validarProveedor() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formProveedor')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            text: 'Proveedor registrado',
+        Swal.fire({
+            title: 'Estas seguro de guardar el proveedor?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
             width: '25em',
-            timer: 10000
-        })
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formProveedor') 
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Registrado',
+                    text: 'Proveedor agregado',
+                    width: '25em',
+                    timer: 10000,
+                    confirmButtonColor: '#198754'
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se guardado el proveedor', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
     }
 
 }
@@ -213,19 +268,40 @@ function validarEditarProveedor() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formEditProveedor')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            text: 'Proveedor registrado',
+        Swal.fire({
+            title: 'Estas seguro de actualizar el proveedor?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
             width: '25em',
-            timer: 10000
-        })
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formEditProveedor') 
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Actualizado',
+                    text: 'Proveedor actualizado',
+                    width: '25em',
+                    timer: 10000,
+                    confirmButtonColor: '#198754'
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha actualizado el proveedor', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
     }
 
 }
@@ -258,19 +334,40 @@ function validarProducto() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formProducto')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            text: 'Usuario registrado',
+        Swal.fire({
+            title: '¿Estas seguro de guardar el producto?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
             width: '25em',
-            timer: 10000
-        })
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formProducto')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Registrado',
+                    text: 'Producto registrado',
+                    width: '25em',
+                    confirmButtonColor: '#198754',
+                    timer: 10000
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha registrado el producto', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
     }
 
 }
@@ -301,19 +398,39 @@ function validarEditarProducto() {
             icon: 'error',
             title: 'Error en la validación',
             width: '25em',
-            text: errors.join('\n')
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
         })
         return false
     } else {
-        let form = document.getElementById('formEditProducto')
-        form.submit()
-        swal.fire({
-            icon: 'success',
-            title: 'Registrado',
-            text: 'Usuario registrado',
-            width: '25em',
-            timer: 10000
-        })
+        Swal.fire({
+            title: '¿Estas seguro de actualizar el producto?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
+            width: '25em'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formEditProducto')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Actualizado',
+                    text: 'Producto actualizado',
+                    width: '25em',
+                    confirmButtonColor: '#198754',
+                    timer: 10000
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha actualizado el producto', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
     }
 
 }

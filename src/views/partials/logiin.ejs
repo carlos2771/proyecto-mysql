@@ -3,4 +3,49 @@
   <title>Usuarios</title>
 
   <%- include("../partials/_header") %>
-  <%- include('../partials/_footer') %>
+
+
+    <!--Contenido-->
+    <div class="col-md-12 signup">
+      <div class="card">
+        <div class="container bg-dark text-light p-2">
+          <h5 class="modal-title text-center h2">¡Bienvenido!</h5>
+        </div>
+        <div class="card-body text-center">
+          <h1 class="strong">PS BARBER-ONLINE</h1>
+          <img src="/img/logo.png" alt="" style="width: 200px !important;">
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <%- include('../partials/_footer') %>
+
+      <style>
+        .signup {
+          width: 100%;
+          max-width: 800px;
+          padding: 10%;
+          margin: auto;
+        }
+
+        /* @media (max-width: 320px){
+    .container, .row{
+        margin: 0px !important;
+    }
+    } */
+
+        @media (max-width: 768px) {
+
+          .signup {
+            padding: 5%
+          }
+
+          .container,
+          .row {
+            margin: 0px !important;
+          }
+        }
+      </style>

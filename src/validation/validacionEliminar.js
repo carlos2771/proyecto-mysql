@@ -47,7 +47,7 @@ function confirmarEliProv(id) {
 
 // Eliminar producto
 
-function confirmarEliProd(id) {
+function confirmarEliProd(id_Producto) {
     Swal.fire({
         title: '¿Estas seguro de eliminarlo?',
         text: "¡No podras reversar esta acción!",
@@ -63,7 +63,7 @@ function confirmarEliProd(id) {
                 'El registro ha sido eliminado',
                 'success'
             ).then(() => {
-                // window.location = '/deleteProducto/'+ id
+                window.location = '/deleteProducto/'+ id_Producto
             })
         }
     })

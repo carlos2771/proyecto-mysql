@@ -74,7 +74,7 @@ controller.editProd = (req, res) => {
       const sqlProveedor1 = "SELECT pvd.nombre, pvd.id FROM proveedor pvd INNER JOIN producto p on ( p.id_Proveedor = pvd.id )";
       const sqlProducto = "SELECT * FROM producto where id_Producto= ?" ;
   
-      conn.query(sqlProveedor1, [id_Proveedor], (errorProveedor, proveedor) => {
+      conn.query(sqlProveedor1,[id_Proveedor], (errorProveedor, proveedor) => {
         if (errorProveedor) {
           res.json(errorProveedor);
           return;
@@ -129,9 +129,9 @@ controller.updateProd = (req, res) => {
 
 
 controller.deleteProd = (req, res) => {
-    const { id } = req.params;
+    const { id_Producto } = req.params;
     req.getConnection((err, conn) => {
-        const result = conn.query("DELETE FROM producto WHERE id_Producto = ?", [id]);
+        const result = conn.query("DELETE FROM producto WHERE id_Producto = ?", [id_Producto]);
         if (result.affectedRows === 1) {
             res.json({ message: "producto  deleted" });
         }
@@ -140,23 +140,6 @@ controller.deleteProd = (req, res) => {
 };
 
 
-// select pvd.nombre from proveedor pvd join producto prod ON (pvd.id = prod.id_Proveedor)
-/*
-controller.proveedor = (req, res) => {
 
-    req.getConnection(async(e, conn) => {
-        await conn.query ("SELECT nombre AS 'nombrePr' FROM `proveedor` WHERE 1", (e, proveedor) => {
-            if (e) {
-                res.json(e);
-            } else {
-                console.log(proveedor);
-                res.render("./producto/producto", {
-                    data: proveedor
-                });
-            }
-        });
-    });
-};
-*/
 
 module.exports = controller

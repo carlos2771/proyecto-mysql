@@ -6,7 +6,8 @@
 
         <div class="container">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-success mt-4 mb-4" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
                 Agregar proveedor
             </button>
 
@@ -23,34 +24,42 @@
                             <div class="col-ms-12">
                                 <form action="/addP" method="post" id="formProveedor">
                                     <div class="form-group mt-2">
-                                        <input type="text" name="nit" placeholder="nit" class="form-control"  id="nit">
+                                        <label for="nit">NIT</label>
+                                        <input type="text" name="nit"="NIT" class="form-control" id="nit">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="nombre" placeholder="nombre" class="form-control" id="nombre">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" name="nombre"="Nombre del proveedor" class="form-control"
+                                            id="nombre">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="telefono" placeholder="telefono" class="form-control" id="telefono">
+                                        <label for="telefono">Teléfono</label>
+                                        <input type="text" name="telefono" class="form-control" id="telefono">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="email" name="email" placeholder="email" class="form-control" id="email">
+                                        <label for="email">Correo electrónico</label>
+                                        <input type="email" name="email" class="form-control" id="email">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="direccion" placeholder="direccion"
-                                            class="form-control" id="direccion">
+                                        <label for="direccion">Dirección</label>
+                                        <input type="text" name="direccion" class="form-control" id="direccion">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="estado" placeholder="estado" class="form-control" id="estado">
+                                        <label for="persona_encardada">Nombre de la Persona Encargada</label>
+                                        <input type="text" name="persona_Encargada" class="form-control"
+                                            id="persona_Encargada">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="persona_Encargada" placeholder="persona_encardada"
-                                            class="form-control" id="persona_Encargada">
+                                        <label for="telefono_PE">Teléfono de la Persona Encargada</label>
+                                        <input type="text" name="telefono_PE" class="form-control" id="telefono_PE">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="text" name="telefono_PE" placeholder="telefono_pe"
-                                            class="form-control" id="telefono_PE">
+                                        <label for="estado">Estado</label>
+                                        <input type="text" name="estado" class="form-control" id="estado">
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary mt-4" onclick="validarProveedor()">Guardar proveedor</button>
+                                        <button type="button" class="btn btn-success mt-4"
+                                            onclick="validarProveedor()">Guardar proveedor</button>
                                         <button type="button" class="btn btn-secondary mt-4"
                                             data-bs-dismiss="modal">Cancelar</button>
                                     </div>
@@ -61,65 +70,65 @@
                 </div>
             </div>
 
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <table id="tablaProveedor" class="table table-bordered table-hover me-5">
-                        <thead class=" bg-dark text-light text-center">
-                            <tr>
-                                <th> ID </th>
-                                <th>nit</th>
-                                <th>Nombre</th>
-                                <th>Telefono</th>
-                                <th>Email</th>
-                                <th>direccion</th>
-                                <th>Estado</th>
-                                <th>persona_encardada</th>
-                                <th>telefono_pe</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <% if(data){ %>
-                                <% for(let i=0; i < data.length; i++ ){%>
-                                    <tr>
-                                        <td>
-                                            <%= (i+1) %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].nit %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].nombre %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].telefono %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].email %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].direccion %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].estado %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].persona_Encargada %>
-                                        </td>
-                                        <td>
-                                            <%= data[i].telefono_PE %>
-                                        </td>
-                                        <td>
-                                            <a href="/updateProveedor/<%= data[i].id %>"
-                                                class="btn btn-info">Actualizar</a>
-                                                <a onclick="confirmarEliProv(<%= data[i].id %>)" class="btn btn-danger">Eliminar</a>
-                                        </td>
-                                    </tr>
-                                    <%} %>
-                                        <% } %>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table id="example" class="table table-bordered table-hover display nowrap">
+                    <thead class=" bg-dark text-light text-center">
+                        <tr>
+                            <th> ID </th>
+                            <th>nit</th>
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>direccion</th>
+                            <th>Estado</th>
+                            <th>persona_encardada</th>
+                            <th>telefono_pe</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <% if(data){ %>
+                            <% for(let i=0; i < data.length; i++ ){%>
+                                <tr>
+                                    <td>
+                                        <%= (i+1) %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].nit %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].nombre %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].telefono %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].email %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].direccion %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].estado %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].persona_Encargada %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].telefono_PE %>
+                                    </td>
+                                    <td>
+                                        <a href="/updateProveedor/<%= data[i].id %>" class="btn btn-info"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                        <a onclick="confirmarEliProv(<%= data[i].id %>)" class="btn btn-danger"><i
+                                                class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <%} %>
+                                    <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
+        
         <%- include('../partials/_footer') %>

@@ -3,50 +3,41 @@
     <title>Editar Usuarios</title>
 
     <%- include("../partials/_header") %>
+    <div class="container mt-5">
+        <div class="table-responsive text-center">
+            <h3>Permisos</h3>
+            <table class="table table-bordered table-hover display nowrap" id="example">
+                <thead class="bg-dark text-white text-center">
+                    <tr>
+                        <th> ID</th>
+                        <th>nombrePermiso</th>
+                        <th>idDelRol</th>
 
-        <div class="container mx-5 my-5">
-            <div class="row mx-5">
-                <div class="col-md-8">
-                    <div class="card">
-                        <h5 class="modal-title text-center">Permisos</h5>
-                        <div class="card-body">
-                                <table   class="table table-bordered table-hover me-5 scrollspy-example" data-bs-spy="scroll"
-                                data-bs-target="#list-example" data-bs-offset="0" tabindex="0" >
-                                <thead class="bg-dark text-white text-center">
-                                    <tr>
-                                        <th> ID</th>
-                                        <th>nombrePermiso</th>
-                                        <th>idDelRol</th>
-                                        
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                    <% if(data){ %>
-                                        <% for(let i=0; i < data.length; i++ ){%>
-                                            <tr>
-                                                <td>
-                                                    <%= (i+1) %>
-                                                </td>
-                                                <td>
-                                                    <%= data[i].nombrePermiso %>
-                                                </td>
-                                                <td>
-                                                    <%= data[i].idDelRol %>
-                                                </td>
-                                                
-                                                
-                                            </tr>
-                                            <%} %>
-                                                <% } %>
-                                </tbody>
-                            </table>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <% if(data){ %>
+                        <% for(let i=0; i < data.length; i++ ){%>
+                            <tr>
+                                <td>
+                                    <%= (i+1) %>
+                                </td>
+                                <td>
+                                    <%= data[i].nombrePermiso %>
+                                </td>
+                                <td>
+                                    <%= data[i].nombreR %>
+                                </td>
+
+
+                            </tr>
+                            <%} %>
+                                <% } %>
+                </tbody>
+            </table>
         </div>
+    </div>
+
 
         <%- include("../partials/_footer") %>

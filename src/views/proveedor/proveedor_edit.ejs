@@ -11,36 +11,45 @@
                         <h5 class="modal-title text-center h2">Editar proveedor</h5>
                         <div class="card-body">
                             <form action="/updateProveedor/<%= data.id %>" method="post" id="formEditProveedor">
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="nit">NIT</label>
                                     <input type="text" name="nit" value="<%= data.nit %>" class="form-control" id="nit">
                                 </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="nombre">Nombre</label>
                                     <input type="text" name="nombre" value="<%= data.nombre %>" class="form-control" id="nombre">
                                 </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="telefono">Teléfono</label>
                                     <input type="text" name="telefono" value="<%= data.telefono %>"
                                         class="form-control" id="telefono">
                                 </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="email">Correo electrónico</label>
                                     <input type="email" name="email" value="<%= data.email %>" class="form-control" id="email">
                                 </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="direccion">Dirección</label>
                                     <input type="text" name="direccion" value="<%= data.direccion %>"
                                         class="form-control" id="direccion">
                                 </div>
-                                <div class="form-group mt-4">
-                                    <input type="text" name="estado" value="<%= data.estado %>" class="form-control" id="estado">
-                                </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="persona_encardada">Nombre de la Persona Encargada</label>
                                     <input type="text" name="persona_Encargada" value="<%= data.persona_Encargada %>"
                                         class="form-control" id="persona_Encargada">
                                 </div>
-                                <div class="form-group mt-4">
+                                <div class="form-group mt-2">
+                                    <label for="telefono_PE">Teléfono de la Persona Encargada</label>
                                     <input type="text" name="telefono_PE" value="<%= data.telefono_PE %>"
                                         placeholder="telefono_pe" class="form-control" id="telefono_PE">
                                 </div>
+                                <div class="form-group mt-2">
+                                    <label for="estado">Estado</label>
+                                    <input type="text" name="estado" value="<%= data.estado %>" class="form-control" id="estado">
+                                </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-success mt-4" onclick="validarEditarProveedor()">Guardar proveedor </button>
+                                    <button type="button" class="btn btn-success mt-2" onclick="validarEditarProveedor()">Guardar proveedor </button>
+                                    <a class="btn btn-secondary mt-2" href="/proveedor">Cancelar</a>
                                 </div>
                             </form>
                         </div>
