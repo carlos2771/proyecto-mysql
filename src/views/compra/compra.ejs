@@ -22,38 +22,33 @@
                         </div>
                         <div class="modal-body">
                             <div class="col-ms-10">
-                                <form action="/addCompra" method="post">
+                                <form action="/addCompra" method="post" id="agregarCompra">
                                     <div class="form-group mt-2 ">
-                                        <input type="date" name="fecha" placeholder="Fecha"
-                                            class="form-control">
+                                        <label for="">Fecha</label>
+                                        <input type="date" name="fecha" 
+                                            class="form-control" id="fecha">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input type="number" name="cantidad" placeholder="cantidad"
-                                            class="form-control">
+                                        <label for="">Cantidad</label>
+                                        <input type="number" name="cantidad"
+                                            class="form-control" id="cantidad">
                                     </div>
                                     <div class="form-group mt-2 ">
-                                        <input type="number" name="total" placeholder="Total"
-                                            class="form-control">
+                                        <label >Total</label>
+                                        <input type="number" name="total" 
+                                            class="form-control" id="total">
                                     </div>
                                     <div class="form-group mt-2 ">
-                                        <input type="number" name="estado" placeholder="Estado"
-                                            class="form-control">
+                                        <label >Estado</label>
+                                        <input type="number" name="estado"
+                                            class="form-control" id="estado">
                                     </div>
                                     <div class="form-group mt-2">
-                                        <label >Productos Disponibles</label>
-                                        <select name="id_Producto" class="form-select">
-                                            <% if (data.producto) { %>                                                
-                                                    <% for (let i=0; i < data.producto.length; i++) { %>
-                                                                <option value="<%= data.producto[i].id_Producto  %>">
-                                                                    <%= data.producto[i].nombre %> Cantidad: <%= data.producto[i].cantidad %>
-                                                                </option>
-                                                                <% } %>
-                                                                    <% } %>
-                                                                       
-                                        </select>
+                                        <label >Productos</label>
+                                        <input type="text" name="ProductoN"  class="form-control" id="producto">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary mt-4">Guardar Compra</button>
+                                        <button type="button" class="btn btn-primary mt-4" onclick="validarCompra()">Guardar Compra</button>
                                         <button type="button" class="btn btn-secondary mt-4"
                                             data-bs-dismiss="modal">Cancelar</button>
                                     </div>
@@ -74,6 +69,7 @@
                             <tr>
                                 <th> ID </th>
                                 <th>Fecha</th>
+                                <th>Producto</th>
                                 <th>Cantidad</th>
                                 <th>Total</th>
                                 <th>Estado</th>
@@ -91,6 +87,9 @@
                                             <%= data.compra[i].fecha %>
                                         </td>
                                         <td>
+                                            <%= data.compra[i].ProductoN %>
+                                        </td>
+                                        <td>
                                             <%= (data.compra[i].cantidad ) %>
                                         </td>
                                         <td>
@@ -100,7 +99,7 @@
                                             <%= data.compra[i].estado %>
                                         </td>
                                         <td>
-                                            <a onclick="confirmarEliProd(<%= data.compra[i].id_Compra %>)"
+                                            <a onclick="confirmarEliCom(<%= data.compra[i].id_Compra %>)"
                                                 class="btn btn-danger">Eliminar</a>
                                         </td>
 

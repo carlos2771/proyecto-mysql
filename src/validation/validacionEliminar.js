@@ -96,7 +96,7 @@ function confirmarEliCom(id) {
                 'El registro ha sido eliminado',
                 'success'
             ).then(() => {
-                // window.location = '/deleteCompra/'+ id
+                window.location = '/deleteCompra/'+ id
             })
         }
     })

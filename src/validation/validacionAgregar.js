@@ -434,3 +434,135 @@ function validarEditarProducto() {
     }
 
 }
+
+
+function validarRegUsuario() {
+
+
+    let nombre = document.getElementById("nombre").value;
+    let documento = document.getElementById("documento").value;
+    let email = document.getElementById("email").value;
+    let contrasena = document.getElementById("contrasena").value;
+    let confirmContrasena = document.getElementById("contrasenaConfirm").value;
+    let estado = document.getElementById("estado").value;
+
+
+    let errors = []
+
+    if (nombre.trim() === '' || documento.trim() === '' || email.trim() === '' || contrasena.trim() === '' || confirmContrasena.trim() === '' || estado.trim() === '') {
+        errors.push('Por favor ingresa todos los campos')
+    } else if (contrasena != confirmContrasena) {
+        errors.push('Las contraseñas no coinciden')
+    } else if (!isValidEmail(email)) {
+        errors.push('Por favor ingrese un correo valido')
+    } else if (!isValidNombre(nombre)) {
+        errors.push('El nombre solo puede contener letras')
+    } else if (!isValidDocument(documento)) {
+        errors.push('El documento solo puede contener números')
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
+        swal.fire({
+            icon: 'error',
+            title: 'Error en la validación',
+            width: '25em',
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
+        })
+        return false
+    } else {
+        Swal.fire({
+            title: 'Estas seguro de registrar el usuario?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
+            width: '25em',
+            confirmButtonColor: '#198754'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('formRegUsuarios')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Registrado',
+                    text: 'Usuario registrado',
+                    width: '25em',
+                    confirmButtonColor: '#198754'             
+                }).then(() => {
+                    window.location = '/login'
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha registrado el usuario', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
+    } 
+
+}
+
+
+function validarCompra() {
+    let fecha = document.getElementById("fecha").value;
+    let cantidad = document.getElementById("cantidad").value;
+    let total = document.getElementById("total").value;
+    let estado = document.getElementById("estado").value;
+    let productos = document.getElementById("producto").value;
+
+    let errors = []
+
+    if (fecha.trim() === '' || cantidad.trim() === '' || total.trim() === '' || estado.trim() === '' || productos.trim() === '') {
+        errors.push('Por favor ingresa todos los campos')
+    } else if (!isValidDocument(cantidad)) {
+        errors.push('La cantidad solo puede contener números')
+    } else if (!isValidDocument(total)) {
+        errors.push('El Total solo puede contener números')
+    } else if (estado != '0' && estado != '1'){
+        errors.push('El estado solo puede ser activo(1) o inactivo(0)')
+    }if (errors.length > 0) {
+        swal.fire({
+            icon: 'error',
+            title: 'Error en la validación',
+            width: '25em',
+            text: errors.join('\n'),
+            confirmButtonColor: '#198754'
+        })
+        return false
+    } else {
+        Swal.fire({
+            title: '¿Estas seguro agregar la compra?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            confirmButtonColor: '#198754',
+            denyButtonText: `No guardar`,
+            width: '25em'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.getElementById('agregarCompra')
+                form.submit()
+                swal.fire({
+                    icon: 'success',
+                    title: 'Actualizado',
+                    text: 'Compra registrada',
+                    width: '25em',
+                    confirmButtonColor: '#198754',
+                    timer: 10000
+                })
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'info', 
+                text: 'No se ha registrado la compra', 
+                width: '25em',
+                confirmButtonColor: '#198754'
+              })
+            }
+          })
+    }
+
+
+
+}
